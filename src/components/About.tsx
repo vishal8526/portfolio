@@ -2,6 +2,9 @@ import React from 'react';
 import { PERSON } from '../constants/portfolio';
 
 const About: React.FC = () => {
+  const photoUrl = `${import.meta.env.BASE_URL}SAVE_20250418_112340.jpg.jpeg`;
+  const resumeUrl = `${import.meta.env.BASE_URL}Vishal_Resume.pdf`;
+
   const highlights = [
     { icon: '📱', title: 'Flutter Development', description: 'Built production-focused Flutter features with calling APIs, Hive storage, and export modules.' },
     { icon: '🧠', title: 'Problem Solving', description: 'NPTEL-certified in C programming and OOP with a strong focus on core fundamentals.' },
@@ -40,7 +43,7 @@ const About: React.FC = () => {
             <div className="relative bg-gray-800 rounded-2xl p-2 transform group-hover:-rotate-1 transition-transform duration-500">
               <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-purple-900 to-cyan-900">
                 <img
-                  src="/SAVE_20250418_112340.jpg.jpeg"
+                  src={photoUrl}
                   alt={`${PERSON.name} profile`}
                   className="w-full h-full object-cover"
                 />
@@ -95,7 +98,7 @@ const About: React.FC = () => {
 
             {/* Download CV Button */}
             <a
-              href="/Vishal_Resume.pdf"
+              href={resumeUrl}
               download
               className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-xl"
             >
