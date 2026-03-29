@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
       return;
     }
 
-    const isValidFormspreeEndpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(formspreeEndpoint);
+    const isValidFormspreeEndpoint = /^https:\/\/formspree\.io\/f\/\S+$/i.test(formspreeEndpoint);
 
     if (!isValidFormspreeEndpoint) {
       setSubmitError('Invalid Formspree endpoint. Use format: https://formspree.io/f/your-form-id');
