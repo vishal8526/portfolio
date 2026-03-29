@@ -22,7 +22,8 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
     setSubmitError('');
 
-    const formspreeEndpoint = (import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined)?.trim();
+    const rawFormspreeEndpoint = (import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined)?.trim();
+    const formspreeEndpoint = rawFormspreeEndpoint?.replace(/^['\"]|['\"]$/g, '').replace(/\/$/, '');
 
     if (!formspreeEndpoint) {
       setSubmitError('Contact form is not configured yet. Please set VITE_FORMSPREE_ENDPOINT.');
@@ -30,7 +31,14 @@ const Contact: React.FC = () => {
       return;
     }
 
-    const isValidFormspreeEndpoint = /^https:\/\/formspree\.io\/f\/\S+$/i.test(formspreeEndpoint);
+    let isValidFormspreeEndpoint = false;
+
+    try {
+      const parsedUrl = new URL(formspreeEndpoint);
+      isValidFormspreeEndpoint = parsedUrl.hostname.toLowerCase() === 'formspree.io' && /^\/f\/[A-Za-z0-9]+$/.test(parsedUrl.pathname);
+    } catch {
+      isValidFormspreeEndpoint = false;
+    }
 
     if (!isValidFormspreeEndpoint) {
       setSubmitError('Invalid Formspree endpoint. Use format: https://formspree.io/f/your-form-id');
