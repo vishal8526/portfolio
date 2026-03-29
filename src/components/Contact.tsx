@@ -22,36 +22,61 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
     setSubmitError('');
 
-    const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
+    const formspreeEndpoint = (import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined)?.trim();
 
     if (!formspreeEndpoint) {
-      setIsSubmitting(false);
       setSubmitError('Contact form is not configured yet. Please set VITE_FORMSPREE_ENDPOINT.');
+      setIsSubmitting(false);
+      return;
+    }
+
+    const isValidFormspreeEndpoint = /^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(formspreeEndpoint);
+
+    if (!isValidFormspreeEndpoint) {
+      setSubmitError('Invalid Formspree endpoint. Use format: https://formspree.io/f/your-form-id');
+      setIsSubmitting(false);
       return;
     }
 
     try {
+      const payload = new FormData();
+      payload.append('name', formValues.name);
+      payload.append('email', formValues.email);
+      payload.append('subject', formValues.subject);
+      payload.append('message', formValues.message);
+
       const response = await fetch(formspreeEndpoint, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify(formValues),
+        body: payload,
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        let errorMessage = 'Could not send your message right now. Please try again.';
+
+        try {
+          const errorData = (await response.json()) as { errors?: Array<{ message?: string }> };
+          const firstError = errorData?.errors?.[0]?.message;
+          if (firstError) {
+            errorMessage = firstError;
+          }
+        } catch {
+          // Keep fallback message when response body is not JSON.
+        }
+
+        throw new Error(errorMessage);
       }
 
-      setIsSubmitting(false);
       setIsSubmitted(true);
       setFormValues({ name: '', email: '', subject: '', message: '' });
 
       setTimeout(() => setIsSubmitted(false), 5000);
-    } catch {
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Could not send your message right now. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitError('Could not send your message right now. Please try again.');
     }
   };
 
