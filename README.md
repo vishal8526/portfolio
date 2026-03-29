@@ -1,19 +1,100 @@
-# Portfolio (React + Vite + Tailwind)
+# Portfolio
 
-A modern personal portfolio built with React, Vite, and Tailwind CSS.
+A modern personal portfolio website built with React, Vite, TypeScript, and Tailwind CSS.
 
----
+## Table of Contents
 
-## 1) Prerequisites
+- [Demo](#demo)
+- [Overview](#overview)
+- [Why This Portfolio](#why-this-portfolio)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Project Structure](#project-structure)
+- [Environment Variables](#environment-variables)
+- [Deployment](#deployment)
+  - [GitHub Pages (GitHub Actions)](#github-pages-github-actions)
+  - [Vercel](#vercel)
+- [Troubleshooting](#troubleshooting)
 
-Install these first:
+## Demo
 
-- **Node.js** (LTS recommended)
-- **npm** (comes with Node.js)
-- **Git**
-- A **GitHub account**
+- Live Site: https://vishal8526.github.io/portfolio/
+- Source Code: https://github.com/vishal8526/portfolio
 
-Check versions:
+## Overview
+
+This project is a responsive portfolio template with sections such as hero, about, skills, experience, projects, testimonials, and contact.
+
+## Why This Portfolio
+
+- Presents your profile in a clean one-page flow that is easy for recruiters to scan
+- Highlights projects, skills, and experience in separate sections for clarity
+- Includes social/contact links and a working contact form option via Formspree
+- Uses modern React + Vite stack for fast performance and easy customization
+
+## About This Project
+
+This portfolio is designed for students, freshers, and developers who want a modern personal website to showcase:
+
+- Professional intro and role highlights
+- Technical skills and tools
+- Featured projects
+- Work/learning experience
+- Certificates and testimonials
+- Contact details and social profiles
+
+The UI uses a dark modern style, smooth section-based navigation, and a short startup loading animation for a polished first impression.
+
+## What Is Included
+
+The app renders these sections in order:
+
+1. Navbar
+2. Hero
+3. About
+4. Skills
+5. Projects
+6. Experience
+7. Certificates
+8. Testimonials
+9. Contact
+10. Footer
+
+All main sections are component-based under `src/components`, making it easy to update specific parts without changing the whole app.
+
+## Customize Your Portfolio
+
+Most profile content (name, headline roles, contact details, social links, and nav items) is managed from:
+
+- `src/constants/portfolio.ts`
+
+To personalize this portfolio quickly:
+
+1. Update your personal details in `PERSON`
+2. Update navigation labels in `SECTION_NAV_ITEMS`
+3. Update social/contact links in `SOCIAL_LINKS` and `CONTACT_INFO_ITEMS`
+4. Edit section component content in `src/components/*`
+
+## Tech Stack
+
+- React 19
+- Vite 7
+- TypeScript
+- Tailwind CSS 4
+
+## Getting Started
+
+### Prerequisites
+
+Install the following:
+
+- Node.js (LTS recommended)
+- npm
+- Git
+- GitHub account (for deployment)
+
+Check installed versions:
 
 ```bash
 node -v
@@ -21,65 +102,64 @@ npm -v
 git --version
 ```
 
----
-
-## 2) Run Locally
-
-1. Open terminal in the project folder.
-2. Install dependencies:
+### Local Setup
 
 ```bash
 npm install
-```
-
-3. Start dev server:
-
-```bash
 npm run dev
 ```
 
-4. Build production files:
+Build for production:
 
 ```bash
 npm run build
 ```
 
----
+## Available Scripts
 
-## 3) Create a GitHub Repository
+| Command           | Description                         |
+| ----------------- | ----------------------------------- |
+| `npm run dev`     | Start development server            |
+| `npm run build`   | Build production files into `dist/` |
+| `npm run preview` | Preview production build locally    |
 
-1. Go to [https://github.com/new](https://github.com/new)
-2. Create a new repository (example: `portfolio`)
-3. Do **not** initialize with README (you already have one)
+## Project Structure
 
----
-
-## 4) Push This Project to GitHub
-
-Run these commands in the project root:
-
-```bash
-git init
-git add .
-git commit -m "Initial portfolio commit"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
+```text
+.
+├── public/
+├── scripts/
+│   └── extract_resume.py
+├── src/
+│   ├── components/
+│   ├── constants/
+│   ├── utils/
+│   ├── App.tsx
+│   └── main.tsx
+├── index.html
+├── package.json
+└── README.md
 ```
 
-Replace `<your-username>` and `<your-repo>`.
+## Environment Variables
 
----
+Create a `.env` file in the project root:
 
-## 5) Deploy on GitHub Pages (Recommended: Automatic)
+```env
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id
+```
 
-### Step A: Add GitHub Actions workflow
+| Variable                  | Required         | Description            |
+| ------------------------- | ---------------- | ---------------------- |
+| `VITE_FORMSPREE_ENDPOINT` | For contact form | Formspree endpoint URL |
 
-Create this file in your project:
+If you update `.env`, restart the dev server.
 
-- `.github/workflows/deploy.yml`
+## Deployment
 
-Paste this content:
+### GitHub Pages (GitHub Actions)
+
+1. Create `.github/workflows/deploy.yml` with this workflow:
 
 ```yaml
 name: Deploy to GitHub Pages
@@ -137,13 +217,9 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-### Step B: Enable Pages in repository settings
+2. In your repository: **Settings → Pages → Source = GitHub Actions**
 
-1. Open your repo on GitHub
-2. Go to **Settings** → **Pages**
-3. Under **Build and deployment**, set **Source** to **GitHub Actions**
-
-### Step C: Push workflow and deploy
+3. Commit and push:
 
 ```bash
 git add .
@@ -151,136 +227,42 @@ git commit -m "Add GitHub Pages deployment workflow"
 git push
 ```
 
-### Step D: Get your live URL
-
-After workflow succeeds (Actions tab), your site will be available at:
+4. Live URL format:
 
 ```text
 https://<your-username>.github.io/<your-repo>/
 ```
 
----
+### Vercel
 
-## 6) Update and Re-Deploy
-
-Every time you push to `main`, GitHub Actions will:
-
-1. Install dependencies
-2. Run production build
-3. Deploy latest `dist/` to GitHub Pages
-
----
-
-## 7) Contact Form Setup (Real Email via Formspree)
-
-Your contact form is wired to send real emails using Formspree.
-
-### Step A: Create a Formspree form
-
-1. Go to [https://formspree.io](https://formspree.io)
-2. Create a form and copy your endpoint URL (example: `https://formspree.io/f/abcxyzpq`)
-
-### Step B: Add environment variable
-
-Create a `.env` file in project root (same level as `package.json`):
+1. Import the repository at [vercel.com](https://vercel.com)
+2. Confirm build settings:
+   - Framework Preset: `Vite`
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+3. Add environment variable:
 
 ```env
 VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id
 ```
 
-You can also copy from `.env.example` and replace the value.
+4. Deploy from Vercel dashboard
 
-### Step C: Restart dev server
+## Troubleshooting
 
-If dev server is running, restart it so Vite picks up `.env` values:
+### 404 or blank page (GitHub Pages)
 
-```bash
-npm run dev
-```
+- Confirm Pages source is set to **GitHub Actions**
+- Check the **Actions** tab for failed workflow steps
+- Ensure deployment branch is `main`
 
-### Step D: Test the form
+### Build fails in CI
 
-1. Open the Contact section
-2. Submit a test message
-3. Check your Formspree inbox/email destination
-
----
-
-## 8) Common Issues
-
-### 404 or blank page
-
-- Confirm **Settings → Pages → Source = GitHub Actions**
-- Check **Actions** tab for failed workflow steps
-- Ensure your default branch is `main`
-
-### Build fails on Actions
-
-- Run locally first:
-
-```bash
-npm run build
-```
-
-- Commit lockfile (`package-lock.json`) so `npm ci` works in CI
+- Run locally: `npm run build`
+- Commit `package-lock.json` so `npm ci` works in CI
 
 ### Contact form shows “not configured”
 
-- Make sure `.env` exists in project root
-- Ensure var name is exactly `VITE_FORMSPREE_ENDPOINT`
-- Restart dev server after changing `.env`
-
----
-
-## 9) Deploy on Vercel (Recommended)
-
-### Step A: Import repository in Vercel
-
-1. Go to [https://vercel.com](https://vercel.com)
-2. Sign in with your GitHub account
-3. Click **Add New** → **Project**
-4. Import `vishal8526/portfolio`
-
-### Step B: Configure project
-
-Vercel usually auto-detects Vite settings. If needed, set:
-
-- **Framework Preset**: Vite
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-
-### Step C: Add environment variable
-
-In **Project Settings** → **Environment Variables**, add:
-
-```env
-VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id
-```
-
-### Step D: Deploy
-
-1. Click **Deploy**
-2. Wait for build to finish
-3. Open your live URL from Vercel dashboard
-
-### Step E: Auto re-deploy
-
-Every push to `main` automatically triggers a new Vercel deployment.
-
----
-
-## 10) Optional: Custom Domain
-
-1. Go to **Settings** → **Pages**
-2. Add your custom domain
-3. Configure DNS records at your domain provider
-4. Wait for SSL certificate provisioning
-
----
-
-## Tech Stack
-
-- React 19
-- Vite 7
-- Tailwind CSS 4
-- TypeScript
+- Verify `.env` exists at the project root
+- Verify variable name is exactly `VITE_FORMSPREE_ENDPOINT`
+- Restart dev server after `.env` changes
