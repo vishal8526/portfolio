@@ -232,7 +232,44 @@ npm run build
 
 ---
 
-## 9) Optional: Custom Domain
+## 9) Deploy on Vercel (Recommended)
+
+### Step A: Import repository in Vercel
+
+1. Go to [https://vercel.com](https://vercel.com)
+2. Sign in with your GitHub account
+3. Click **Add New** → **Project**
+4. Import `vishal8526/portfolio`
+
+### Step B: Configure project
+
+Vercel usually auto-detects Vite settings. If needed, set:
+
+- **Framework Preset**: Vite
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+
+### Step C: Add environment variable
+
+In **Project Settings** → **Environment Variables**, add:
+
+```env
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/your-form-id
+```
+
+### Step D: Deploy
+
+1. Click **Deploy**
+2. Wait for build to finish
+3. Open your live URL from Vercel dashboard
+
+### Step E: Auto re-deploy
+
+Every push to `main` automatically triggers a new Vercel deployment.
+
+---
+
+## 10) Optional: Custom Domain
 
 1. Go to **Settings** → **Pages**
 2. Add your custom domain
