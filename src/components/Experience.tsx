@@ -51,7 +51,7 @@ const Experience: React.FC = () => {
       location: 'Jaipur, Rajasthan',
       period: '2023 - Present',
       description: [
-        'Current CGPA: 8.5.',
+        'Current CGPA: 8.7.',
         'Focused on computer science fundamentals and application development.',
       ],
       technologies: ['C', 'Java', 'Dart', 'OOP'],
@@ -64,7 +64,7 @@ const Experience: React.FC = () => {
       location: 'Kotputli, Rajasthan',
       period: '2023',
       description: [
-        'Completed higher secondary education with 69.8% marks.',
+        'Completed higher secondary education with 70.0% marks.',
       ],
       technologies: ['Mathematics', 'Science', 'Computer Basics'],
       type: 'education',

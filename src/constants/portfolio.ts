@@ -34,7 +34,6 @@ export const SECTION_NAV_ITEMS: NavigationItem[] = [
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
   { id: 'certificates', label: 'Certificates' },
-  { id: 'testimonials', label: 'Testimonials' },
   { id: 'contact', label: 'Contact' },
 ];
 

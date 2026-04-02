@@ -30,15 +30,17 @@ const Skills: React.FC = () => {
       ],
     },
     {
-      title: 'App Development',
+      title: 'App & Web Development',
       icon: '📱',
       skills: [
         { name: 'Flutter', level: 88, icon: '🦋', color: 'from-cyan-400 to-blue-500' },
+        { name: 'React', level: 82, icon: '⚛️', color: 'from-cyan-400 to-sky-500' },
+        { name: 'Next.js', level: 80, icon: '▲', color: 'from-gray-400 to-gray-700' },
+        { name: 'SQLite', level: 78, icon: '🗄️', color: 'from-indigo-400 to-blue-600' },
         { name: 'Firebase', level: 82, icon: '🔥', color: 'from-yellow-400 to-orange-500' },
         { name: 'Hive', level: 80, icon: '🗃️', color: 'from-amber-400 to-yellow-600' },
         { name: 'REST APIs', level: 85, icon: '🔌', color: 'from-purple-400 to-pink-500' },
         { name: 'Phone APIs', level: 80, icon: '📞', color: 'from-green-400 to-emerald-600' },
-        { name: 'Offline Storage', level: 84, icon: '💾', color: 'from-indigo-400 to-purple-600' },
       ],
     },
     {
@@ -74,7 +76,7 @@ const Skills: React.FC = () => {
   ];
 
   const techLogos = [
-    'Flutter', 'Dart', 'Firebase', 'Hive', 'JavaScript', 'Java', 
+    'Flutter', 'React', 'Next.js', 'SQLite', 'Dart', 'Firebase', 'Hive', 'JavaScript', 'Java', 
     'C', 'Git', 'GitHub', 'VS Code', 'Android Studio', 'REST APIs',
     'HTML', 'CSS', 'CSV/PDF Export', 'OOP', 'Data Structures', 'Algorithms',
   ];
@@ -98,7 +100,7 @@ const Skills: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Resume-based skill set focused on Flutter app development, programming fundamentals, and practical developer tooling.
+            Skill set based on shipped projects including Flutter apps and Gov Portal web development with React/Next.js and SQLite.
           </p>
         </div>
 
@@ -168,10 +170,10 @@ const Skills: React.FC = () => {
         {/* Skills Summary Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
           {[
-            { icon: '💻', value: '12+', label: 'Core Technologies', color: 'from-purple-500 to-pink-500' },
-            { icon: '📚', value: '3', label: 'Main Projects', color: 'from-cyan-500 to-blue-500' },
+            { icon: '💻', value: '15+', label: 'Core Technologies', color: 'from-purple-500 to-pink-500' },
+            { icon: '📚', value: '6', label: 'Main Projects', color: 'from-cyan-500 to-blue-500' },
             { icon: '🏆', value: '1', label: 'Hackathon Win', color: 'from-green-500 to-emerald-500' },
-            { icon: '🎓', value: '8.5', label: 'Current CGPA', color: 'from-orange-500 to-red-500' },
+            { icon: '🎓', value: '8.7', label: 'Current CGPA', color: 'from-orange-500 to-red-500' },
           ].map((stat) => (
             <div
               key={stat.label}

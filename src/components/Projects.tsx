@@ -61,7 +61,7 @@ const Projects: React.FC = () => {
       github: '#',
       featured: true,
     },
-      {
+    {
       id: 5,
       title: 'Mindful Spending',
       description: 'Mobile app for tracking Transactions, Managing Budget, and progress with social challenges.',
@@ -70,6 +70,17 @@ const Projects: React.FC = () => {
       category: 'mobile',
       link: '#',
       github: '#',
+      featured: true,
+    },
+    {
+      id: 6,
+      title: 'Gov Portal',
+      description: 'Government School Admission & Scholarship Portal',
+      image: '🏛️',
+      tags: ['Next.js', 'React', 'Sqlite', 'Web App'],
+      category: 'web',
+      link: 'https://github.com/vishal8526/gov_portal',
+      github: 'https://github.com/vishal8526/gov_portal',
       featured: true,
     },
   ];

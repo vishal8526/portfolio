@@ -114,8 +114,8 @@ const Hero: React.FC = () => {
 
         {/* Description */}
         <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-          B.Tech CSE student at PIET Jaipur with hands-on experience in Flutter app development, 
-          REST APIs, and problem solving. I build practical products with clean code and strong fundamentals.
+          B.Tech CSE student at PIET Jaipur with hands-on experience in Flutter and web development.
+          I build practical products like Gov Portal using React/Next.js, SQLite, Firebase, and clean engineering practices.
         </p>
 
         {/* CTA Buttons */}
@@ -151,8 +151,8 @@ const Hero: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 animate-fade-in-up" style={{ animationDelay: '1s' }}>
           {[
             { value: '1', label: 'Internship' },
-            { value: '3+', label: 'Key Projects' },
-            { value: '8.5', label: 'Current CGPA' },
+            { value: '5+', label: 'Key Projects' },
+            { value: '8.7', label: 'Current CGPA' },
             { value: '2024', label: 'SIH Winner' },
           ].map((stat) => (
             <div key={stat.label} className="text-center group">

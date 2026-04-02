@@ -55,6 +55,16 @@ const Certificates: React.FC = () => {
       color: 'from-cyan-400 to-blue-500',
       skills: ['Flutter', 'Dart', 'Mobile UI', 'App Development'],
     },
+    {
+      id: 5,
+      title: 'Cybersecurity Certification',
+      issuer: 'Google Cloud',
+      date: '2026',
+      credentialId: 'GOOGLE-CYBER',
+      icon: '🔒',
+      color: 'from-cyan-400 to-blue-500',
+      skills: ['Cybersecurity', 'Network Security', 'Threat Analysis', 'Incident Response'],
+    },
   ];
 
   return (
@@ -115,7 +125,7 @@ const Certificates: React.FC = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {[
-            { value: '4', label: 'Certificates', icon: '🏅' },
+            { value: '5', label: 'Certificates', icon: '🏅' },
             { value: '1', label: 'Hackathon Win', icon: '🏆' },
             { value: '2', label: 'NPTEL Courses', icon: '📘' },
             { value: '1', label: 'Flutter Certification', icon: '📱' },

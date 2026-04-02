@@ -68,7 +68,7 @@ const About: React.FC = () => {
           <div className="space-y-8">
             <div className="prose prose-lg prose-invert">
               <p className="text-gray-300 text-lg leading-relaxed">
-                Hello! I'm <span className="text-white font-semibold">{PERSON.name}</span>, a B.Tech CSE student from {PERSON.location} currently studying at Poornima Institute of Engineering and Technology with a CGPA of 8.5.
+                Hello! I'm <span className="text-white font-semibold">{PERSON.name}</span>, a B.Tech CSE student from {PERSON.location} currently studying at Poornima Institute of Engineering and Technology with a CGPA of 8.7.
                 I focus on Flutter app development and building practical software solutions.
               </p>
               <p className="text-gray-400 leading-relaxed">
@@ -96,18 +96,32 @@ const About: React.FC = () => {
               ))}
             </div>
 
-            {/* Download CV Button */}
-            <a
-              href={resumeUrl}
-              download
-              className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-600 transition-transform duration-300 group-hover:scale-105"></div>
-              <span className="relative text-white font-semibold">Download Resume</span>
-              <svg className="relative w-5 h-5 text-white transform group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
-            </a>
+            {/* Resume Actions */}
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href={resumeUrl}
+                download
+                className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-xl"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-600 transition-transform duration-300 group-hover:scale-105"></div>
+                <span className="relative text-white font-semibold">Download Resume</span>
+                <svg className="relative w-5 h-5 text-white transform group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+              </a>
+
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl border border-gray-600 text-white font-semibold hover:border-cyan-500/70 hover:bg-gray-800/60 transition-colors"
+              >
+                <span>View Resume</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h6m0 0v6m0-6L10 16M7 7h2m-2 0v2m0-2l4 4" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
 
