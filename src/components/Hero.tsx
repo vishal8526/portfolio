@@ -153,7 +153,7 @@ const Hero: React.FC = () => {
             { value: '1', label: 'Internship' },
             { value: '5+', label: 'Key Projects' },
             { value: '8.7', label: 'Current CGPA' },
-            { value: '2024', label: 'SIH Winner' },
+            { value: '2024', label: 'SIH Winner (Internal)' },
           ].map((stat) => (
             <div key={stat.label} className="text-center group">
               <div className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 group-hover:scale-110 transition-transform">

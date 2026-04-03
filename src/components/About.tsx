@@ -81,21 +81,6 @@ const About: React.FC = () => {
               </p>
             </div>
 
-            {/* Quick Info */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { label: 'Name', value: PERSON.name },
-                { label: 'Location', value: PERSON.location },
-                { label: 'Email', value: PERSON.email },
-                { label: 'Availability', value: 'Open to Internship' },
-              ].map((infoItem) => (
-                <div key={infoItem.label} className="bg-gray-800/50 rounded-xl p-4 border border-gray-700/50">
-                  <div className="text-gray-500 text-sm">{infoItem.label}</div>
-                  <div className="text-white font-medium mt-1">{infoItem.value}</div>
-                </div>
-              ))}
-            </div>
-
             {/* Resume Actions */}
             <div className="flex flex-wrap items-center gap-4">
               <a
