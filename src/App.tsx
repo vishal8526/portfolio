@@ -17,6 +17,16 @@ const App: React.FC = () => {
     return () => clearTimeout(loadingTimeoutId);
   }, []);
 
+  useEffect(() => {
+    if (window.location.hash.startsWith('#project/')) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }, []);
+
+  const openProjectPage = (_projectId: string) => {
+    return;
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
@@ -38,7 +48,7 @@ const App: React.FC = () => {
       <Hero />
       <About />
       <Skills />
-      <Projects />
+      <Projects onOpenProject={openProjectPage} />
       <Experience />
       <Certificates />
       <Contact />

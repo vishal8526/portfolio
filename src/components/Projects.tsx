@@ -10,9 +10,14 @@ interface Project {
   link: string;
   github: string;
   featured: boolean;
+  detailPageId?: 'automatic-calling-system' | 'habit-tracker' | 'mindful-spending';
 }
 
-const Projects: React.FC = () => {
+interface ProjectsProps {
+  onOpenProject: (projectId: string) => void;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
   const [activeCategoryId, setActiveCategoryId] = useState('all');
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null);
 
@@ -24,9 +29,10 @@ const Projects: React.FC = () => {
       image: '📞',
       tags: ['Flutter', 'Hive', 'Firebase', 'Phone APIs'],
       category: 'mobile',
-      link: '#',
+      link: '#project/automatic-calling-system',
       github: '#',
       featured: true,
+      detailPageId: 'automatic-calling-system',
     },
     {
       id: 2,
@@ -35,7 +41,7 @@ const Projects: React.FC = () => {
       image: '🏠',
       tags: ['IoT', 'Voice Control', 'Automation', 'Mobile App'],
       category: 'iot',
-      link: '#',
+      link: 'https://youtu.be/31ON72g01cA?si=k9BjtXu2KNtEEYWi',
       github: '#',
       featured: true,
     },
@@ -57,9 +63,10 @@ const Projects: React.FC = () => {
       image: '💪',
       tags: ['Flutter', 'Firebase', 'HealthKit'],
       category: 'mobile',
-      link: '#',
+      link: '#project/habit-tracker',
       github: '#',
       featured: true,
+      detailPageId: 'habit-tracker',
     },
     {
       id: 5,
@@ -68,9 +75,10 @@ const Projects: React.FC = () => {
       image: '💸',
       tags: ['Flutter', 'Firebase', 'chart package'],
       category: 'mobile',
-      link: '#',
+      link: '#project/mindful-spending',
       github: '#',
       featured: true,
+      detailPageId: 'mindful-spending',
     },
     {
       id: 6,
@@ -167,6 +175,12 @@ const Projects: React.FC = () => {
                   <div className="flex gap-3">
                     <a
                       href={project.link}
+                      onClick={(event) => {
+                        if (project.detailPageId) {
+                          event.preventDefault();
+                          onOpenProject(project.detailPageId);
+                        }
+                      }}
                       className="px-4 py-2 bg-white text-gray-900 rounded-lg font-medium text-sm flex items-center gap-2 hover:bg-gray-200 transition-colors"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

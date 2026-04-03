@@ -1,9 +1,46 @@
 import React, { useState } from 'react';
+import { IconType } from 'react-icons';
+import {
+  SiAndroidstudio,
+  SiC,
+  SiCss,
+  SiDart,
+  SiFirebase,
+  SiFlutter,
+  SiGit,
+  SiGithub,
+  SiHive,
+  SiHtml5,
+  SiJavascript,
+  SiNextdotjs,
+  SiReact,
+  SiSqlite,
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa6';
+import { TbApi } from 'react-icons/tb';
+import {
+  MdAccessTime,
+  MdAccountTree,
+  MdAutorenew,
+  MdChatBubble,
+  MdEmojiEvents,
+  MdExtension,
+  MdGroup,
+  MdKeyboardVoice,
+  MdMemory,
+  MdPhoneAndroid,
+  MdSettingsApplications,
+  MdStorage,
+} from 'react-icons/md';
+import { BiBugAlt } from 'react-icons/bi';
+import { HiOutlineDocumentArrowDown } from 'react-icons/hi2';
+import { VscVscode } from 'react-icons/vsc';
 
 interface Skill {
   name: string;
   level: number;
-  icon: string;
+  icon: IconType;
+  iconClassName?: string;
   color: string;
 }
 
@@ -21,55 +58,55 @@ const Skills: React.FC = () => {
       title: 'Languages',
       icon: '💻',
       skills: [
-        { name: 'C', level: 88, icon: '🧮', color: 'from-blue-400 to-indigo-500' },
-        { name: 'Dart', level: 85, icon: '🎯', color: 'from-cyan-400 to-blue-500' },
-        { name: 'Java', level: 80, icon: '☕', color: 'from-red-400 to-orange-500' },
-        { name: 'HTML', level: 90, icon: '🌐', color: 'from-orange-400 to-red-500' },
-        { name: 'CSS', level: 86, icon: '🎨', color: 'from-blue-400 to-cyan-500' },
-        { name: 'JavaScript', level: 84, icon: '🟨', color: 'from-yellow-400 to-amber-500' },
+        { name: 'C', level: 88, icon: SiC, iconClassName: 'text-blue-400', color: 'from-blue-400 to-indigo-500' },
+        { name: 'Dart', level: 85, icon: SiDart, iconClassName: 'text-cyan-400', color: 'from-cyan-400 to-blue-500' },
+        { name: 'Java', level: 80, icon: FaJava, iconClassName: 'text-blue-500', color: 'from-red-400 to-orange-500' },
+        { name: 'HTML', level: 90, icon: SiHtml5, iconClassName: 'text-orange-400', color: 'from-orange-400 to-red-500' },
+        { name: 'CSS', level: 86, icon: SiCss, iconClassName: 'text-blue-400', color: 'from-blue-400 to-cyan-500' },
+        { name: 'JavaScript', level: 84, icon: SiJavascript, iconClassName: 'text-yellow-400', color: 'from-yellow-400 to-amber-500' },
       ],
     },
     {
       title: 'App & Web Development',
       icon: '📱',
       skills: [
-        { name: 'Flutter', level: 88, icon: '🦋', color: 'from-cyan-400 to-blue-500' },
-        { name: 'React', level: 82, icon: '⚛️', color: 'from-cyan-400 to-sky-500' },
-        { name: 'Next.js', level: 80, icon: '▲', color: 'from-gray-400 to-gray-700' },
-        { name: 'SQLite', level: 78, icon: '🗄️', color: 'from-indigo-400 to-blue-600' },
-        { name: 'Firebase', level: 82, icon: '🔥', color: 'from-yellow-400 to-orange-500' },
-        { name: 'Hive', level: 80, icon: '🗃️', color: 'from-amber-400 to-yellow-600' },
-        { name: 'REST APIs', level: 85, icon: '🔌', color: 'from-purple-400 to-pink-500' },
-        { name: 'Phone APIs', level: 80, icon: '📞', color: 'from-green-400 to-emerald-600' },
+        { name: 'Flutter', level: 88, icon: SiFlutter, iconClassName: 'text-cyan-400', color: 'from-cyan-400 to-blue-500' },
+        { name: 'React', level: 82, icon: SiReact, iconClassName: 'text-cyan-400', color: 'from-cyan-400 to-sky-500' },
+        { name: 'Next.js', level: 80, icon: SiNextdotjs, iconClassName: 'text-white', color: 'from-gray-400 to-gray-700' },
+        { name: 'SQLite', level: 78, icon: SiSqlite, iconClassName: 'text-indigo-400', color: 'from-indigo-400 to-blue-600' },
+        { name: 'Firebase', level: 82, icon: SiFirebase, iconClassName: 'text-yellow-400', color: 'from-yellow-400 to-orange-500' },
+        { name: 'Hive', level: 80, icon: SiHive, iconClassName: 'text-amber-400', color: 'from-amber-400 to-yellow-600' },
+        { name: 'REST APIs', level: 85, icon: TbApi, iconClassName: 'text-purple-400', color: 'from-purple-400 to-pink-500' },
+        { name: 'Phone APIs', level: 80, icon: MdPhoneAndroid, iconClassName: 'text-green-400', color: 'from-green-400 to-emerald-600' },
       ],
     },
     {
       title: 'Developer Tools',
       icon: '🛠️',
       skills: [
-        { name: 'Git', level: 88, icon: '📦', color: 'from-orange-400 to-red-500' },
-        { name: 'GitHub', level: 88, icon: '🐙', color: 'from-gray-400 to-gray-600' },
-        { name: 'VS Code', level: 90, icon: '🧩', color: 'from-blue-400 to-cyan-500' },
-        { name: 'Android Studio', level: 80, icon: '🤖', color: 'from-green-400 to-emerald-600' },
-        { name: 'CSV/PDF Export', level: 78, icon: '📄', color: 'from-slate-400 to-slate-600' },
-        { name: 'Debugging', level: 84, icon: '🪲', color: 'from-purple-400 to-indigo-500' },
+        { name: 'Git', level: 88, icon: SiGit, iconClassName: 'text-orange-400', color: 'from-orange-400 to-red-500' },
+        { name: 'GitHub', level: 88, icon: SiGithub, iconClassName: 'text-white', color: 'from-gray-400 to-gray-600' },
+        { name: 'VS Code', level: 90, icon: VscVscode, iconClassName: 'text-blue-400', color: 'from-blue-400 to-cyan-500' },
+        { name: 'Android Studio', level: 80, icon: SiAndroidstudio, iconClassName: 'text-green-400', color: 'from-green-400 to-emerald-600' },
+        { name: 'CSV/PDF Export', level: 78, icon: HiOutlineDocumentArrowDown, iconClassName: 'text-slate-300', color: 'from-slate-400 to-slate-600' },
+        { name: 'Debugging', level: 84, icon: BiBugAlt, iconClassName: 'text-purple-400', color: 'from-purple-400 to-indigo-500' },
       ],
     },
     {
       title: 'CS Fundamentals',
       icon: '🧠',
       skills: [
-        { name: 'OOP', level: 85, icon: '🧱', color: 'from-purple-400 to-indigo-500' },
-        { name: 'Problem Solving', level: 88, icon: '🧩', color: 'from-blue-400 to-cyan-500' },
-        { name: 'Data Structures', level: 80, icon: '🗂️', color: 'from-yellow-400 to-amber-500' },
-        { name: 'Algorithms', level: 78, icon: '⚙️', color: 'from-green-400 to-emerald-500' },
-        { name: 'IoT Basics', level: 76, icon: '🏠', color: 'from-pink-400 to-rose-500' },
-        { name: 'Voice Control Integration', level: 75, icon: '🎙️', color: 'from-orange-400 to-red-500' },
-        { name: 'Communication', level: 90, icon: '💬', color: 'from-blue-400 to-cyan-500' },
-        { name: 'Leadership', level: 85, icon: '👑', color: 'from-yellow-400 to-amber-500' },
-        { name: 'Teamwork', level: 95, icon: '🤝', color: 'from-green-400 to-emerald-500' },
-        { name: 'Adaptability', level: 92, icon: '🔄', color: 'from-pink-400 to-rose-500' },
-        { name: 'Time Management', level: 88, icon: '⏰', color: 'from-orange-400 to-red-500' },
+        { name: 'OOP', level: 85, icon: MdAccountTree, iconClassName: 'text-purple-400', color: 'from-purple-400 to-indigo-500' },
+        { name: 'Problem Solving', level: 88, icon: MdExtension, iconClassName: 'text-blue-400', color: 'from-blue-400 to-cyan-500' },
+        { name: 'Data Structures', level: 80, icon: MdStorage, iconClassName: 'text-yellow-400', color: 'from-yellow-400 to-amber-500' },
+        { name: 'Algorithms', level: 78, icon: MdSettingsApplications, iconClassName: 'text-green-400', color: 'from-green-400 to-emerald-500' },
+        { name: 'IoT Basics', level: 76, icon: MdMemory, iconClassName: 'text-pink-400', color: 'from-pink-400 to-rose-500' },
+        { name: 'Voice Control Integration', level: 75, icon: MdKeyboardVoice, iconClassName: 'text-orange-400', color: 'from-orange-400 to-red-500' },
+        { name: 'Communication', level: 90, icon: MdChatBubble, iconClassName: 'text-blue-400', color: 'from-blue-400 to-cyan-500' },
+        { name: 'Leadership', level: 85, icon: MdEmojiEvents, iconClassName: 'text-yellow-400', color: 'from-yellow-400 to-amber-500' },
+        { name: 'Teamwork', level: 95, icon: MdGroup, iconClassName: 'text-green-400', color: 'from-green-400 to-emerald-500' },
+        { name: 'Adaptability', level: 92, icon: MdAutorenew, iconClassName: 'text-pink-400', color: 'from-pink-400 to-rose-500' },
+        { name: 'Time Management', level: 88, icon: MdAccessTime, iconClassName: 'text-orange-400', color: 'from-orange-400 to-red-500' },
 
       ],
     },
@@ -140,7 +177,9 @@ const Skills: React.FC = () => {
 
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories[activeCategory].skills.map((skill, index) => (
+          {skillCategories[activeCategory].skills.map((skill, index) => {
+            const SkillIcon = skill.icon;
+            return (
             <div
               key={index}
               className="group bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:bg-gray-800/50 hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1"
@@ -148,7 +187,7 @@ const Skills: React.FC = () => {
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-2xl">{skill.icon}</span>
+                  <SkillIcon className={`text-2xl ${skill.iconClassName ?? 'text-white'}`} />
                   <span className="text-white font-semibold">{skill.name}</span>
                 </div>
                 <span className="text-gray-400 font-mono text-sm">{skill.level}%</span>
@@ -164,7 +203,8 @@ const Skills: React.FC = () => {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Skills Summary Cards */}
