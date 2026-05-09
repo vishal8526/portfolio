@@ -2,7 +2,7 @@ import React from 'react';
 import { PERSON } from '../constants/portfolio';
 
 const About: React.FC = () => {
-  const photoUrl = `${import.meta.env.BASE_URL}SAVE_20250418_112340.jpg.jpeg`;
+  const photoUrl = new URL('../../SAVE_20250418_112340.jpg.jpeg', import.meta.url).href;
   const resumeUrl = `${import.meta.env.BASE_URL}Vishal_Resume.pdf`;
 
   const highlights = [
