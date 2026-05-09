@@ -86,8 +86,8 @@ const mindfulSpendingScreenshots = createAssetList('Mindful Spending', [
   '6.png',
 ]);
 
-const habitBanaoLogo = new URL(`../../App photo/HabitBanao/HabitBanao Logo.png`, import.meta.url).href;
-const mindfulSpendingLogo = new URL(`../../App photo/Mindful Spending/MindFull logo.png`, import.meta.url).href;
+const habitBanaoLogo = createAssetList('HabitBanao', ['HabitBanao Logo.png'])[0];
+const mindfulSpendingLogo = createAssetList('Mindful Spending', ['MindFull logo.png'])[0];
 
 // APK paths - served as static assets
 const connectFlowApk = `${import.meta.env.BASE_URL}App photo/ConnectFlow/Connectflow.apk`;
