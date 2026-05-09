@@ -3,7 +3,7 @@ import { PERSON } from '../constants/portfolio';
 
 const About: React.FC = () => {
   const photoUrl = new URL('../../SAVE_20250418_112340.jpg.jpeg', import.meta.url).href;
-  const resumeUrl = `${import.meta.env.BASE_URL}Vishal_Resume.pdf`;
+  const resumeUrl = new URL('../../Vishal_Resume.pdf', import.meta.url).href;
 
   const highlights = [
     { icon: '📱', title: 'Flutter Development', description: 'Built production-focused Flutter features with calling APIs, Hive storage, and export modules.' },
@@ -85,7 +85,7 @@ const About: React.FC = () => {
             <div className="flex flex-wrap items-center gap-4">
               <a
                 href={resumeUrl}
-                download
+                download="Vishal_Resume.pdf"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-xl"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-cyan-600 transition-transform duration-300 group-hover:scale-105"></div>
