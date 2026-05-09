@@ -22,7 +22,9 @@ const isFlutterProjectId = (value: string): value is FlutterProjectId =>
   FLUTTER_PROJECT_IDS.includes(value as FlutterProjectId);
 
 const getProjectIdFromHash = () => {
-  const hashMatch = window.location.hash.match(/^#project\/([^/?#]+)/);
+  // Normalize hash: handle both #project/... and ##project/... (from PDF viewers)
+  let hash = window.location.hash.replace(/^#+/, '#');
+  const hashMatch = hash.match(/^#project\/([^/?#]+)/);
 
   if (!hashMatch) {
     return null;
