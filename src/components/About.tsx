@@ -45,6 +45,8 @@ const About: React.FC = () => {
                 <img
                   src={photoUrl}
                   alt={`${PERSON.name} profile`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>

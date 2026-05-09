@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 import sihCertificate from '../../certificate/SIH/WhatsApp Image 2026-05-09 at 1.20.43 AM.jpeg';
 import problemSolvingCertificate from '../../certificate/Problem-Solving-Through-Programming-In-C/Problem Solving Through Programming In C_pages-to-jpg-0001.jpg';
@@ -22,6 +22,8 @@ interface Certificate {
 
 const Certificates: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const [visibleCerts, setVisibleCerts] = useState<Set<number>>(new Set([1, 2, 3, 4])); // First 4 visible by default
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const certificates: Certificate[] = [
     {
@@ -103,6 +105,28 @@ const Certificates: React.FC = () => {
     },
   ];
 
+  // Lazy load certificates as they come into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const certId = parseInt(entry.target.getAttribute('data-cert-id') || '0');
+            setVisibleCerts((prev) => new Set([...prev, certId]));
+            // Stop observing this element once loaded
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    const certElements = gridRef.current?.querySelectorAll('[data-cert-id]');
+    certElements?.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="certificates" className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -127,13 +151,14 @@ const Certificates: React.FC = () => {
         </div>
 
         {/* Certificates Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" ref={gridRef}>
           {certificates.map((cert, index) => (
             <div
               key={cert.id}
               onClick={() => setSelectedCert(cert)}
               className="group relative bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 cursor-pointer hover:bg-gray-800/50 hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-500/10"
               style={{ animationDelay: `${index * 100}ms` }}
+              data-cert-id={cert.id}
             >
               {/* Icon */}
               <div className={`w-16 h-16 bg-gradient-to-br ${cert.color} rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform shadow-lg`}>
@@ -204,6 +229,8 @@ const Certificates: React.FC = () => {
                 <img
                   src={selectedCert.image}
                   alt={selectedCert.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full max-h-[75vh] object-contain mx-auto"
                 />
               </div>
