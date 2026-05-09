@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FLUTTER_PROJECT_SHOWCASES } from '../constants/flutterShowcase';
 
 interface Project {
   id: number;
@@ -61,7 +62,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
       id: 4,
       title: 'Habit Tracker',
       description: 'Mobile app for tracking workouts, nutrition, and progress with social challenges.',
-      image: '💪',
+      image: FLUTTER_PROJECT_SHOWCASES['habit-tracker'].logoUrl || '💪',
       tags: ['Flutter', 'Firebase', 'HealthKit'],
       category: 'mobile',
       link: '#project/habit-tracker',
@@ -73,7 +74,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
       id: 5,
       title: 'Mindful Spending',
       description: 'Mobile app for tracking Transactions, Managing Budget, and progress with social challenges.',
-      image: '💸',
+      image: FLUTTER_PROJECT_SHOWCASES['mindful-spending'].logoUrl || '💸',
       tags: ['Flutter', 'Firebase', 'chart package'],
       category: 'mobile',
       link: '#project/mindful-spending',
@@ -179,9 +180,19 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
 
               {/* Project Image/Icon */}
               <div className="relative h-48 bg-gradient-to-br from-purple-900/50 to-cyan-900/50 flex items-center justify-center overflow-hidden">
-                <div className={`text-8xl transition-transform duration-500 ${hoveredProjectId === project.id ? 'scale-110' : ''}`}>
-                  {project.image}
-                </div>
+                {project.image.includes('/') ? (
+                  // Image URL - render as img tag
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className={`max-h-32 max-w-32 object-contain transition-transform duration-500 ${hoveredProjectId === project.id ? 'scale-110' : ''}`}
+                  />
+                ) : (
+                  // Emoji - render as text
+                  <div className={`text-8xl transition-transform duration-500 ${hoveredProjectId === project.id ? 'scale-110' : ''}`}>
+                    {project.image}
+                  </div>
+                )}
                 
                 {/* Overlay on Hover */}
                 <div className={`absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent flex items-end justify-center pb-6 transition-opacity duration-300 ${
