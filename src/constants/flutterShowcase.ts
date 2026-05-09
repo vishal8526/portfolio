@@ -90,9 +90,9 @@ const habitBanaoLogo = new URL(`../../App photo/HabitBanao/HabitBanao Logo.png`,
 const mindfulSpendingLogo = new URL(`../../App photo/Mindful Spending/MindFull logo.png`, import.meta.url).href;
 
 // APK paths - served as static assets
-const connectFlowApk = '/App photo/ConnectFlow/Connectflow.apk';
-const habitBanaoApk = '/App photo/HabitBanao/HabitBanao.apk';
-const mindfulSpendingApk = '/App photo/Mindful Spending/Mindful.apk';
+const connectFlowApk = `${import.meta.env.BASE_URL}App photo/ConnectFlow/Connectflow.apk`;
+const habitBanaoApk = `${import.meta.env.BASE_URL}App photo/HabitBanao/HabitBanao.apk`;
+const mindfulSpendingApk = `${import.meta.env.BASE_URL}App photo/Mindful Spending/Mindful.apk`;
 
 export const FLUTTER_PROJECT_SHOWCASES: Record<FlutterProjectId, ShowcaseProject> = {
   'automatic-calling-system': {
