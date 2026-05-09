@@ -89,10 +89,10 @@ const mindfulSpendingScreenshots = createAssetList('Mindful Spending', [
 const habitBanaoLogo = createAssetList('HabitBanao', ['HabitBanao Logo.png'])[0];
 const mindfulSpendingLogo = createAssetList('Mindful Spending', ['MindFull logo.png'])[0];
 
-// APK paths - served as static assets
-const connectFlowApk = `${import.meta.env.BASE_URL}App photo/ConnectFlow/Connectflow.apk`;
-const habitBanaoApk = `${import.meta.env.BASE_URL}App photo/HabitBanao/HabitBanao.apk`;
-const mindfulSpendingApk = `${import.meta.env.BASE_URL}App photo/Mindful Spending/Mindful.apk`;
+// APK paths - served as static assets (publicDir files are copied to the root of `dist`)
+const connectFlowApk = `${import.meta.env.BASE_URL}ConnectFlow/Connectflow.apk`;
+const habitBanaoApk = `${import.meta.env.BASE_URL}HabitBanao/HabitBanao.apk`;
+const mindfulSpendingApk = `${import.meta.env.BASE_URL}Mindful Spending/Mindful.apk`;
 
 export const FLUTTER_PROJECT_SHOWCASES: Record<FlutterProjectId, ShowcaseProject> = {
   'automatic-calling-system': {
