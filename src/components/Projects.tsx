@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { FLUTTER_PROJECT_SHOWCASES } from '../constants/flutterShowcase';
 
 interface Project {
@@ -117,6 +117,9 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
     ? projects 
     : projects.filter((projectItem) => projectItem.category === activeCategoryId);
 
+  // Cache buster for images (one value per page load)
+  const cacheBuster = useMemo(() => String(Date.now()), []);
+
   const visibleProjects = filteredProjects.slice(0, 6);
   const projectsToRender = showAllProjects ? filteredProjects : visibleProjects;
 
@@ -181,9 +184,9 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
               {/* Project Image/Icon */}
               <div className="relative h-48 bg-gradient-to-br from-purple-900/50 to-cyan-900/50 flex items-center justify-center overflow-hidden">
                 {project.image.includes('/') ? (
-                  // Image URL - render as img tag
+                  // Image URL - render as img tag with cache-buster to avoid stale cached logos
                   <img 
-                    src={project.image} 
+                    src={`${project.image}${project.image.includes('?') ? '&' : '?'}cb=${cacheBuster}`} 
                     alt={project.title}
                     className={`max-h-32 max-w-32 object-contain transition-transform duration-500 ${hoveredProjectId === project.id ? 'scale-110' : ''}`}
                   />
