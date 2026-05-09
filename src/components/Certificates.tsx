@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 
+import sihCertificate from '../../certificate/SIH/WhatsApp Image 2026-05-09 at 1.20.43 AM.jpeg';
+import problemSolvingCertificate from '../../certificate/Problem-Solving-Through-Programming-In-C/Problem Solving Through Programming In C_pages-to-jpg-0001.jpg';
+import oopCertificate from '../../certificate/Fundamentals-of-Object-Oriented-Programming/Fundamentals of Object Oriented Programming_page-0001.jpg';
+import dartFlutterCertificate from '../../certificate/Dart & Flutter/samyak dart & fultter_page-0001.jpg';
+import entrepreneurshipCertificate from '../../certificate/Entrepreneurship/Entrepreneurship_page-0001.jpg';
+import germanCertificate from '../../certificate/German---I/German - I_page-0001.jpg';
+import cybersecurityCertificate from '../../certificate/Cybersecurity/ryvkegII_pages-to-jpg-0001.jpg';
+
 interface Certificate {
   id: number;
   title: string;
@@ -9,6 +17,7 @@ interface Certificate {
   icon: string;
   color: string;
   skills: string[];
+  image: string;
 }
 
 const Certificates: React.FC = () => {
@@ -24,6 +33,7 @@ const Certificates: React.FC = () => {
       icon: '🏆',
       color: 'from-yellow-400 to-orange-600',
       skills: ['Problem Solving', 'Team Collaboration', 'Rapid Prototyping', 'Innovation'],
+      image: sihCertificate,
     },
     {
       id: 2,
@@ -34,16 +44,18 @@ const Certificates: React.FC = () => {
       icon: '🧮',
       color: 'from-blue-400 to-indigo-600',
       skills: ['C Programming', 'Logic Building', 'Problem Solving', 'Fundamentals'],
+      image: problemSolvingCertificate,
     },
     {
       id: 3,
       title: 'Fundamentals of Object Oriented Programming',
       issuer: 'NPTEL',
-      date: '2024',
+      date: '2025',
       credentialId: 'NPTEL-OOP',
       icon: '🧠',
       color: 'from-purple-400 to-indigo-600',
       skills: ['OOP Concepts', 'Class Design', 'Abstraction', 'Code Reusability'],
+      image: oopCertificate,
     },
     {
       id: 4,
@@ -54,9 +66,32 @@ const Certificates: React.FC = () => {
       icon: '📱',
       color: 'from-cyan-400 to-blue-500',
       skills: ['Flutter', 'Dart', 'Mobile UI', 'App Development'],
+      image: dartFlutterCertificate,
     },
     {
       id: 5,
+      title: 'Entrepreneurship',
+      issuer: 'NPTEL',
+      date: '2025',
+      credentialId: 'NPTEL-ENT',
+      icon: '💡',
+      color: 'from-amber-400 to-orange-600',
+      skills: ['Business Thinking', 'Opportunity Evaluation', 'Innovation', 'Startup Mindset'],
+      image: entrepreneurshipCertificate,
+    },
+    {
+      id: 6,
+      title: 'German - I',
+      issuer: 'NPTEL',
+      date: '2025',
+      credentialId: 'NPTEL-GER-1',
+      icon: '🇩🇪',
+      color: 'from-red-400 to-rose-600',
+      skills: ['German Basics', 'Language Skills', 'Grammar', 'Vocabulary'],
+      image: germanCertificate,
+    },
+    {
+      id: 7,
       title: 'Cybersecurity Certification',
       issuer: 'Google Cloud',
       date: '2026',
@@ -64,6 +99,7 @@ const Certificates: React.FC = () => {
       icon: '🔒',
       color: 'from-cyan-400 to-blue-500',
       skills: ['Cybersecurity', 'Network Security', 'Threat Analysis', 'Incident Response'],
+      image: cybersecurityCertificate,
     },
   ];
 
@@ -125,10 +161,10 @@ const Certificates: React.FC = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {[
-            { value: '5', label: 'Certificates', icon: '🏅' },
+            { value: '7', label: 'Certificates', icon: '🏅' },
             { value: '1', label: 'Hackathon Win', icon: '🏆' },
-            { value: '2', label: 'NPTEL Courses', icon: '📘' },
-            { value: '1', label: 'Flutter Certification', icon: '📱' },
+            { value: '4', label: 'NPTEL Courses', icon: '📘' },
+            { value: '2', label: 'Technical Certifications', icon: '📱' },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -149,7 +185,7 @@ const Certificates: React.FC = () => {
           onClick={() => setSelectedCert(null)}
         >
           <div
-            className="relative bg-gray-800 border border-gray-700 rounded-3xl p-8 max-w-lg w-full transform animate-scale-in"
+            className="relative bg-gray-800 border border-gray-700 rounded-3xl p-5 sm:p-6 max-w-4xl w-full transform animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -162,40 +198,18 @@ const Certificates: React.FC = () => {
               </svg>
             </button>
 
-            {/* Certificate Content */}
+            {/* Certificate Preview */}
             <div className="text-center">
-              <div className={`w-24 h-24 bg-gradient-to-br ${selectedCert.color} rounded-3xl flex items-center justify-center text-5xl mx-auto mb-6 shadow-xl`}>
-                {selectedCert.icon}
+              <div className="mb-5 sm:mb-6 overflow-hidden rounded-2xl border border-gray-700 bg-black/30 shadow-2xl shadow-black/30">
+                <img
+                  src={selectedCert.image}
+                  alt={selectedCert.title}
+                  className="w-full max-h-[75vh] object-contain mx-auto"
+                />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-2">{selectedCert.title}</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{selectedCert.title}</h3>
               <p className="text-cyan-400 font-medium mb-1">{selectedCert.issuer}</p>
-              <p className="text-gray-400 text-sm mb-6">{selectedCert.date}</p>
-
-              {/* Credential ID */}
-              <div className="bg-gray-700/50 rounded-xl p-4 mb-6">
-                <p className="text-gray-500 text-xs mb-1">Credential ID</p>
-                <p className="text-white font-mono">{selectedCert.credentialId}</p>
-              </div>
-
-              {/* Skills */}
-              <div className="mb-6">
-                <p className="text-gray-400 text-sm mb-3">Skills Validated</p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {selectedCert.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-purple-500/20 text-purple-300 text-sm rounded-full border border-purple-500/30"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Verify Button */}
-              <button className="w-full py-3 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-shadow">
-                Verify Credential
-              </button>
+              <p className="text-gray-400 text-sm">{selectedCert.date}</p>
             </div>
           </div>
 

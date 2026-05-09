@@ -24,7 +24,7 @@ export const PERSON = {
   location: 'Jaipur, Rajasthan, India',
   email: 'vishal63mittal@gmail.com',
   phone: '6367278526',
-  website: 'leetcode.com/u/Vishal_gupta0',
+  website: 'vishalgupta62',
 } as const;
 
 export const SECTION_NAV_ITEMS: NavigationItem[] = [
@@ -41,7 +41,7 @@ export const CONTACT_INFO_ITEMS: ContactInfoItem[] = [
   { icon: '📧', label: 'Email', value: PERSON.email, link: `mailto:${PERSON.email}` },
   { icon: '📱', label: 'Phone', value: PERSON.phone, link: 'tel:+916367278526' },
   { icon: '📍', label: 'Location', value: PERSON.location, link: '#' },
-  { icon: '🌐', label: 'LeetCode', value: PERSON.website, link: 'https://leetcode.com/u/Vishal_gupta0/' },
+  { icon: '🌐', label: 'LinkedIn', value: PERSON.website, link: 'https://www.linkedin.com/in/vishalgupta62/' },
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [

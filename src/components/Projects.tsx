@@ -20,6 +20,7 @@ interface ProjectsProps {
 const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
   const [activeCategoryId, setActiveCategoryId] = useState('all');
   const [hoveredProjectId, setHoveredProjectId] = useState<number | null>(null);
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const projects: Project[] = [
     {
@@ -36,13 +37,13 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
     },
     {
       id: 2,
-      title: 'Home Automation System',
-      description: 'IoT-based smart home solution with centralized control, real-time monitoring, and voice assistant integration.',
-      image: '🏠',
-      tags: ['IoT', 'Voice Control', 'Automation', 'Mobile App'],
-      category: 'iot',
-      link: 'https://youtu.be/31ON72g01cA?si=k9BjtXu2KNtEEYWi',
-      github: '#',
+      title: 'SocialMind AI',
+      description: 'AI-powered social media intelligence platform. Real YouTube data, Groq LLM, Supabase auth. 100% free to run.',
+      image: '🖥️',
+      tags: ['TypeScript', 'Python', 'CSS', 'Web App'],
+      category: 'web',
+      link: 'https://social-mind-one.vercel.app',
+      github: 'https://github.com/vishal8526/SocialMind',
       featured: true,
     },
     {
@@ -64,7 +65,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
       tags: ['Flutter', 'Firebase', 'HealthKit'],
       category: 'mobile',
       link: '#project/habit-tracker',
-      github: '#',
+      github: 'https://github.com/vishal8526/Habitbanao',
       featured: true,
       detailPageId: 'habit-tracker',
     },
@@ -82,6 +83,17 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
     },
     {
       id: 6,
+      title: 'Home Automation System',
+      description: 'IoT-based smart home solution with centralized control, real-time monitoring, and voice assistant integration.',
+      image: '🏠',
+      tags: ['IoT', 'Voice Control', 'Automation', 'Mobile App'],
+      category: 'iot',
+      link: 'https://youtu.be/31ON72g01cA?si=k9BjtXu2KNtEEYWi',
+      github: '#',
+      featured: true,
+    },
+    {
+      id: 7,
       title: 'Gov Portal',
       description: 'Government School Admission & Scholarship Portal',
       image: '🏛️',
@@ -103,6 +115,9 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
   const filteredProjects = activeCategoryId === 'all' 
     ? projects 
     : projects.filter((projectItem) => projectItem.category === activeCategoryId);
+
+  const visibleProjects = filteredProjects.slice(0, 6);
+  const projectsToRender = showAllProjects ? filteredProjects : visibleProjects;
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
@@ -146,7 +161,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+          {projectsToRender.map((project) => (
             <div
               key={project.id}
               className={`group relative bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-500/10 ${
@@ -228,8 +243,15 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenProject }) => {
 
         {/* View More Button */}
         <div className="text-center mt-12">
-          <button className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-xl border-2 border-gray-700 hover:border-purple-500 transition-colors">
-            <span className="text-white font-semibold">View All Projects</span>
+          <button
+            type="button"
+            onClick={() => setShowAllProjects((currentValue) => !currentValue)}
+            className="group relative inline-flex items-center gap-3 px-8 py-4 overflow-hidden rounded-xl border-2 border-gray-700 hover:border-purple-500 transition-colors"
+            aria-expanded={showAllProjects}
+          >
+            <span className="text-white font-semibold">
+              {showAllProjects ? 'Show Less Projects' : 'View All Projects'}
+            </span>
             <svg className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
